@@ -48,10 +48,32 @@
   <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-latest.js"></script>
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+ <script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-0.1.js"></script>
   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
 </head>
 <body>
+    <amp-consent id='ABC' layout='nodisplay'>
+        <script type="application/json">{
+            "consents": {
+              "myConsentId": {
+                "checkConsentHref": "http://localhost:8000/get-consent-v1",
+                "promptUI": "ui1"
+              }
+            },
+            "postPromptUI": "postPromptUI"
+          }</script>
+        <div id="ui1">
+            Can I load the image??
+            <button on="tap:ABC.accept" role="button">Accept</button>
+            <button on="tap:ABC.reject" role="button">Reject</button>
+            <button on="tap:ABC.dismiss" role="button">Dismiss</button>
+        </div>
+        <div id="postPromptUI">
+            Post Prompt UI
+            <button on="tap:ABC.prompt" role="button">Manage</button>
+        </div>
+    </amp-consent>
   <div class="filterBar">
     <form action="ads.amp.html" method="get" target="_top">
       <label for="filter">Ad network filter</label>
@@ -95,6 +117,7 @@
         <option>adverline</option>
         <option>adverticum</option>
         <option>advertserve</option>
+        <option>adyoulike</option>
         <option>affiliateb</option>
         <option>aja</option>
         <option>amoad</option>
@@ -528,6 +551,7 @@
       src="https://adserver.adtechus.com/addyn/3.0/5280.1/2274008/0/-1/ADTECH;size=300x250;key=plumber;alias=careerbear-ros-middle1;loc=300;;target=_blank;grp=27980912;misc=3767074">
   </amp-ad>
 
+
   <h2>AdThrive 320x50 banner</h2>
   <amp-ad width="320" height="50"
       type="adthrive"
@@ -592,6 +616,14 @@
       data-zid=68>
   </amp-ad>
 
+  <h2>Adyoulike</h2>
+  <amp-ad 
+       width="300"
+       height="250"
+       type="adyoulike"
+       data-placement="d135a2027b1041059f06fbf8cf4ddfef"
+       data-dc="fra01">
+  </amp-ad>
   <h2>Affiliate-B</h2>
   <amp-ad width="300" height="250"
       type="affiliateb"
